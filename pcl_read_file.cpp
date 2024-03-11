@@ -1,11 +1,13 @@
 #include "pcl_read_file.h"
 
+#include <string>
+
 PointCloudReader::PointCloudReader(
     std::string filename,
     pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud)
     : mCloud(cloud)
 {
-    Read();
+    Read(filename);
 }
 
 PointCloudReader::PointCloudReader(
@@ -13,15 +15,15 @@ PointCloudReader::PointCloudReader(
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloudRGB)
     : mCloudRGB(cloudRGB)
 {
-    ReadRGB();
+    ReadRGB(filename);
 }
 
-void PointCloudReader::Read()
+void PointCloudReader::Read(std::string filename)
 {
-    mReader.read("table_scene_lms400.pcd", *mCloud);
+    mReader.read(filename, *mCloud);
 }
 
-void PointCloudReader::ReadRGB()
+void PointCloudReader::ReadRGB(std::string filename)
 {
-    mReader.read("table_scene_lms400.pcd", *mCloudRGB);
+    mReader.read(filename, *mCloudRGB);
 }

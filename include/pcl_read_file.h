@@ -12,8 +12,8 @@ public:
         std::string filename,
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloudRGB);
     
-    void Read();
-    void ReadRGB();
+    void Read(std::string filename);
+    void ReadRGB(std::string filename);
 
 private:
     pcl::PCDReader mReader;
